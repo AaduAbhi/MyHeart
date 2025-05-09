@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Bollywood Love Journey ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff6f61 0%, #ffb88c 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .background-decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: url('3.jpg') no-repeat center/cover;
+            opacity: 0.5;
+        }
+
+        header {
+            padding: 40px 0;
+            animation: slideIn 2s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #b11226;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .heart {
+            color: #ff1e56;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+
+        .section {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #ffd700;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #b11226;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff1e56, #ff6f61);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #d81b60, #f4511e);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .photo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .memory {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffebee, #fffde7);
+            border-radius: 10px;
+            border: 1px solid #ffd700;
+        }
+
+        .memory h3 {
+            color: #b11226;
+            margin-bottom: 10px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .love-letter {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #fffde7, #ffebee);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            max-width: 80%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: zoomIn 0.5s ease-out;
+            border: 3px solid #ffd700;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #b11226;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff1e56;
+        }
+
+        .countdown {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            color: #b11226;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart-emoji {
+            position: absolute;
+            font-size: 25px;
+            animation: float 5s linear infinite;
+            opacity: 0;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: rotate(-5deg);
+            transition: all 0.3s;
+            width: 200px;
+            margin: 20px auto;
+            border: 2px solid #ffd700;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+        }
+
+        .polaroid p {
+            text-align: center;
+            font-style: italic;
+            margin-top: 10px;
+            color: #666;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            color: #ffd700;
+            animation: sparkle 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-decor"></div>
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Our Love Journey <span class="heart">❤️</span></h1>
+            <p>A Bollywood-inspired tribute to our eternal love story</p>
+        </header>
+
+        <section class="section" id="welcome">
+            <h2>Welcome, My Love</h2>
+            <p>This website is my love letter to you, inspired by the vibrant romance of Bollywood and our journey together.</p>
+            <p>Like a train ride through India's heart, every moment with you is an adventure I cherish.</p>
+            <button class="btn" id="surprise-btn">A Bollywood Surprise!</button>
+        </section>
+
+        <section class="section" id="memories">
+            <h2>Our Filmi Memories</h2>
+            <p>Moments that feel like scenes from a Yash Chopra movie:</p>
+            
+            <div class="memory">
+                <h3>Our Haridwar Moment</h3>
+                <p>Like Shri Ram and Sita, our love will also remained immortal like the Ram Setu on a moonlit night.</p>
+            </div>
+            
+            <div class="memory">
+                <h3>Dance Romance</h3>
+                <p>Dancing like Raj and Simran, with only love to keep us warm.</p>
+            </div>
+            
+            <div class="memory">
+                <h3>Your Smile in Haridwar</h3>
+                <p>Your laughter by the Ganges was more beautiful than any aarti.</p>
+            </div>
+            
+            <button class="btn" id="add-memory-btn">Add Your Filmi Memory</button>
+        </section>
+
+        <section class="section" id="gallery">
+            <h2>Our Cinematic Gallery</h2>
+            <p>Capturing our love in frames worthy of a Bollywood blockbuster.</p>
+            
+            <div class="photo-gallery">
+                <div class="photo">
+                    <img src="1.jpg" alt="Us in Haridwar">
+                </div>
+                <div class="photo">
+                    <img src="8.jpg" alt="Goa sunset">
+                </div>
+                <div class="photo">
+                    <img src="2.jpg" alt="Festive love">
+                </div>
+                <div class="photo">
+                    <img src="7.jpg" alt="Our journey">
+                </div>
+                <div class="photo">
+                    <img src="3.jpg" alt="Our journey">
+                </div>
+                <div class="photo">
+                    <img src="4.jpg" alt="Our journey">
+                </div>
+                <div class="photo">
+                    <img src="5.jpg" alt="Our journey">
+                </div>
+                <div class="photo">
+                    <img src="6.jpg" alt="Our journey">
+                </div>
+            </div>
+            
+            <button class="btn" id="view-more-btn">More Cinematic Moments</button>
+        </section>
+
+        <section class="section" id="polaroid">
+            <h2>Our Polaroid Diary</h2>
+            <div class="polaroid">
+                <img src="bus.jpeg" alt="Your radiant smile">
+                <p>The day you stole my heart in Bus</p>
+            </div>
+            <button class="btn" id="polaroid-btn">Add Our Polaroid</button>
+        </section>
+
+        <section class="section" id="countdown">
+            <h2>Countdown to Our Dilwale Anniversary</h2>
+            <p>Only <span id="days">X</span> days until we celebrate our love again!</p>
+            <div class="countdown" id="countdown-timer"></div>
+            <button class="btn" id="plan-date-btn">Plan a Filmi Date</button>
+        </section>
+
+        <section class="section" id="love-letter">
+            <h2>Ek Love Letter Tumhare Liye</h2>
+            <p>A letter written with the passion of a Bollywood hero.</p>
+            <button class="btn" id="letter-btn">Read My Love Letter</button>
+        </section>
+
+        <section class="section" id="playlist">
+            <h2>Our Bollywood Playlist</h2>
+            <p>Songs that echo our love across India's landscapes.</p>
+            <div id="song-list"></div>
+            <button class="btn" id="add-song-btn">Add Your Favorite Song</button>
+        </section>
+
+        <section class="section" id="final-message">
+            <h2>Meri Duniya, Tum</h2>
+            <p>Like a Bollywood epic, our love will live forever.</p>
+            <p>You're my Radha, my Anjali, my everything.</p>
+            <p>Main tumse pyar karta hoon, ab aur hamesha.</p>
+            <button class="btn" id="final-surprise-btn">Ek Aakhri Surprise</button>
+        </section>
+    </div>
+
+    <div class="hidden" id="love-letter-popup">
+        <div class="overlay" id="overlay"></div>
+        <div class="love-letter">
+            <button class="close-btn" id="close-letter-btn">×</button>
+            <h2>My Love,</h2>
+            <p>From the bustling streets of Delhi to the serene backwaters of Haridwar, my heart travels only to you.</p>
+            <p>Your smile is brighter than the lights of Diwali, your love warmer than a Rajasthani sunset.</p>
+            <p>Like a Bollywood hero, I promise to fight for our love, to dance with you through every storm.</p>
+            <p>Hamesha tumhara,</p>
+            <p>Abhi</p>
+        </div>
+    </div>
+
+    <div class="hidden" id="final-surprise">
+        <div class="overlay" id="final-overlay"></div>
+        <div class="love-letter" style="text-align: center;">
+            <button class="close-btn" id="close-final-btn">×</button>
+            <h2>Zindagi Bhar Saath Dogi?</h2>
+            <p>Like a journey across India's heart,</p>
+            <p>Will you travel through life with me?</p>
+            <div style="margin: 30px 0;">
+                <span class="heart" style="font-size: 3rem;">❤️</span>
+            </div>
+            <p>Will you be my partner in every filmi adventure,</p>
+            <p>To create our own blockbuster love story?</p>
+            <div style="margin-top: 30px;">
+                <button class="btn" id="yes-btn" style="background: linear-gradient(45deg, #4CAF50, #8BC34A);">Haan!</button>
+                <button class="btn" id="no-btn" style="background: linear-gradient(45deg, #f44336, #d32f2f);">Na!</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, setting up event listeners...');
+            createHearts();
+            
+            const anniversary = new Date();
+            anniversary.setMonth(anniversary.getMonth() + 1);
+            updateCountdown(anniversary);
+            setInterval(() => updateCountdown(anniversary), 1000);
+            
+            // Button event listeners with debug logs
+            const buttons = {
+                'surprise-btn': showSurprise,
+                'letter-btn': showLoveLetter,
+                'close-letter-btn': hideLoveLetter,
+                'overlay': hideLoveLetter,
+                'final-surprise-btn': showFinalSurprise,
+                'close-final-btn': hideFinalSurprise,
+                'final-overlay': hideFinalSurprise,
+                'yes-btn': () => alert("Tumne dil jeet liya! I love you forever! ❤️"),
+                'no-btn': moveNoButton,
+                'add-memory-btn': addMemory,
+                'view-more-btn': viewMorePhotos,
+                'add-song-btn': addSong,
+                'polaroid-btn': createPolaroid,
+                'plan-date-btn': planDate
+            };
+
+            Object.keys(buttons).forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('click', (e) => {
+                        console.log(`Button clicked: ${id}`);
+                        buttons[id](e);
+                    });
+                } else {
+                    console.error(`Element with ID ${id} not found`);
+                }
+            });
+            
+            const songs = [
+                "Tum Hi Ho - Aashiqui 2",
+                "Dil Diyan Gallan - Tiger Zinda Hai",
+                "Shiddat Bana Lu Tujhe - Shiddat",
+                "Pehla Nasha - Jo Jeeta Wohi Sikandar",
+                "Tujh Mein Rab Dikhta Hai - Rab Ne Bana Di Jodi"
+            ];
+            
+            const songList = document.getElementById('song-list');
+            songs.forEach(song => {
+                const p = document.createElement('p');
+                p.textContent = song;
+                p.style.margin = '10px 0';
+                p.style.fontStyle = 'italic';
+                p.style.color = '#b11226';
+                songList.appendChild(p);
+            });
+        });
+        
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart-emoji');
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    container.appendChild(heart);
+                    
+                    const sparkle = document.createElement('div');
+                    sparkle.classList.add('sparkle');
+                    sparkle.innerHTML = '✨';
+                    sparkle.style.left = Math.random() * 100 + 'vw';
+                    sparkle.style.top = Math.random() * 100 + 'vh';
+                    container.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                        sparkle.remove();
+                    }, 5000);
+                }, i * 300);
+            }
+            
+            setInterval(createHearts, 15000);
+        }
+        
+        function showSurprise() {
+            console.log('Showing surprise');
+            alert("Surprise, meri jaan! Our love is the greatest Bollywood blockbuster! ❤️");
+            
+            const btn = document.getElementById('surprise-btn');
+            const rect = btn.getBoundingClientRect();
+            const x = rect.left + rect.width/2;
+            const y = rect.top + rect.height/2;
+            
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-emoji');
+                heart.innerHTML = '❤️';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                heart.style.position = 'fixed';
+                heart.style.fontSize = '30px';
+                heart.style.animationDuration = '2s';
+                document.body.appendChild(heart);
+                
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.innerHTML = '✨';
+                sparkle.style.left = (x + (Math.random() * 50 - 25)) + 'px';
+                sparkle.style.top = (y + (Math.random() * 50 - 25)) + 'px';
+                sparkle.style.position = 'fixed';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    heart.remove();
+                    sparkle.remove();
+                }, 2000);
+            }
+        }
+        
+        function updateCountdown(targetDate) {
+            const now = new Date();
+            const diff = targetDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById('countdown-timer').innerHTML = "Aaj humara anniversary hai! Happy Anniversary, meri jaan!";
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('countdown-timer').innerHTML = 
+                `${310}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+        
+        function showLoveLetter() {
+            console.log('Showing love letter');
+            document.getElementById('love-letter-popup').classList.remove('hidden');
+        }
+        
+        function hideLoveLetter() {
+            console.log('Hiding love letter');
+            document.getElementById('love-letter-popup').classList.add('hidden');
+        }
+        
+        function showFinalSurprise() {
+            console.log('Showing final surprise');
+            document.getElementById('final-surprise').classList.remove('hidden');
+        }
+        
+        function hideFinalSurprise() {
+            console.log('Hiding final surprise');
+            document.getElementById('final-surprise').classList.add('hidden');
+        }
+        
+        function moveNoButton() {
+            console.log('Moving no button');
+            const btn = document.getElementById('no-btn');
+            if (!btn) {
+                console.error('No button not found');
+                return;
+            }
+            const container = document.querySelector('.love-letter');
+            const containerRect = container.getBoundingClientRect();
+            const maxX = containerRect.width - btn.offsetWidth;
+            const maxY = containerRect.height - btn.offsetHeight;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+        
+        function addMemory() {
+            console.log('Adding memory');
+            const memory = prompt("Kya hai humara ek yaadgaar filmi moment?");
+            if (memory) {
+                const memoriesSection = document.getElementById('memories');
+                const newMemory = document.createElement('div');
+                newMemory.classList.add('memory');
+                newMemory.innerHTML = `
+                    <h3>Humara Khaas Pal</h3>
+                    <p>${memory}</p>
+                `;
+                memoriesSection.insertBefore(newMemory, document.getElementById('add-memory-btn'));
+            }
+        }
+        
+        function viewMorePhotos() {
+            console.log('Viewing more photos');
+            alert("Aur tasveerein jald hi! Yeh gallery humare pyar ki tarah badhti rahegi!");
+        }
+        
+        function addSong() {
+            console.log('Adding song');
+            const song = prompt("Kaunsa gaana humare pyar ki yaad dilata hai?");
+            if (song) {
+                const songList = document.getElementById('song-list');
+                const p = document.createElement('p');
+                p.textContent = song;
+                p.style.margin = '10px 0';
+                p.style.fontStyle = 'italic';
+                p.style.color = '#b11226';
+                songList.appendChild(p);
+            }
+        }
+        
+        function createPolaroid() {
+            console.log('Creating polaroid');
+            const caption = prompt("Is polaroid ke liye kya caption chahiye?");
+            if (caption) {
+                const polaroidSection = document.getElementById('polaroid');
+                const newPolaroid = document.createElement('div');
+                newPolaroid.classList.add('polaroid');
+                newPolaroid.innerHTML = `
+                    <img src="3.jpg" alt="Humari tasveer">
+                    <p>${caption}</p>
+                `;
+                polaroidSection.appendChild(newPolaroid);
+            }
+        }
+        
+        function planDate() {
+            console.log('Planning date');
+            const dateIdeas = [
+                "Romantic dinner with candlelight and Bollywood music",
+                "Monsoon picnic like a DDLJ scene",
+                "Bollywood movie marathon with kulfi",
+                "Train journey to a nearby hill station",
+                "Recreate a Yash Chopra movie moment",
+                "Juhu Beach walk at sunset",
+                "Dance to our favorite Bollywood songs",
+                "Visit a local fair like a filmi mela"
+            ];
+            
+            const randomIdea = dateIdeas[Math.floor(Math.random() * dateIdeas.length)];
+            alert(`Kyun na hum apni agli date ke liye yeh karein: ${randomIdea}? ❤️`);
+        }
+    </script>
+</body>
+</html>
